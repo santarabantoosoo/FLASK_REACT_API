@@ -415,7 +415,7 @@ GET '/categories/<id>/questions'
   "total_questions": 20
 }
 
-```
+
 POST '/quizzes'
 - It receieved a category and a list of already played questions. Based on the chosen category, questions within this category are chosen. The game continues where new questions are rendered waiting for an answer till all questions per category are finished. 
 - Request Arguments: None
@@ -435,6 +435,7 @@ POST '/quizzes'
     }
 }
 
+```
 ## Testing
 To run the tests, run
 ```

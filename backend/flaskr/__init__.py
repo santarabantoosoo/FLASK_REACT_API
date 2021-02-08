@@ -305,11 +305,13 @@ def create_app(test_config=None):
 
             print('cat', catg)
             print('prv', previousQuestions)            
-            ques_in_cat = Question.query.filter_by(category=catg).all()
-            
-            available_ques = [
-                av_ques for av_ques in ques_in_cat if Question.id not in previousQuestions]
-            print('----')
+          
+            if catg == 0:
+                ques_in_cat = Question.query.all()   
+            else:
+                ques_in_cat = Question.query.filter_by(category=catg).all()
+       
+            available_ques = [av_ques for av_ques in ques_in_cat if Question.id not in previousQuestions]
 
             ques = random.choice(available_ques)
 
@@ -323,9 +325,6 @@ def create_app(test_config=None):
 
             currentQuestion = ques.format()
 
-            print('qs_form', currentQuestion)
-            print('qs_cat', quizCategory)
-            print(previousQuestions)
         except Exception as e:
             print(e)
             abort(422)
